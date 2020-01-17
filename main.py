@@ -1,12 +1,13 @@
 #from normalization import normalize_corpus
 from flask import Flask, jsonify, request
 from flasgger import Swagger
+from flask_cors import CORS
 from sklearn.externals import joblib
 import numpy as np
 
 app = Flask(__name__)
 Swagger(app)
-
+CORS(app)
 
 
 @app.route('/input/task', methods=['POST'])
