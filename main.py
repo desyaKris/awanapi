@@ -1,9 +1,10 @@
 #from normalization import normalize_corpus
 from flask import Flask, jsonify, request
-from flasgger import Swagger
-from flask_cors import CORS
 from sklearn.externals import joblib
 import numpy as np
+from flasgger import Swagger
+from flask_cors import CORS
+
 
 app = Flask(__name__)
 Swagger(app)
@@ -41,14 +42,12 @@ def predict():
 
 
     pipe = joblib.load('static/neuralNetworkClassifier.pkl')
-    pipe2 = joblib.load('static/naiveBayesClassifier.pkl')
 
     resultGenrePredict = pipe[0].predict(X_New)
-    resultEmosiPredict = pipe2[0].predict(X_New)
 
 
 
-    return jsonify({'genre': format(resultGenrePredict),'emosi' : format(resultEmosiPredict)})
+    return jsonify({'message': format(resultGenrePredict)})
 
 
 if __name__ == '__main__':
