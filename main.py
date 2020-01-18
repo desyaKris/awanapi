@@ -41,7 +41,7 @@ def predict():
     #X_New=normalize_corpus(X_New)
 
 
-    pipe = joblib.load('static/neuralNetworkClassifier.pkl')
+    pipe = joblib.load('static/naiveBayesClassifier.pkl')
 
     resultGenrePredict = pipe[0].predict(X_New)
 
